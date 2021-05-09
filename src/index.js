@@ -3,6 +3,7 @@ const path = require("path");
 const axios = require("axios");
 const os = require("os");
 const fs = require("fs").promises;
+const luraphClass = require("./Luraph/Luraph");
 
 const getAbsolutePath = (filePath) => {
     if (filePath[0] !== "~") return path.resolve(filePath);
@@ -18,8 +19,8 @@ const run = async () => {
     const script = await fs
         .readFile(filePath, { encoding: "utf8" })
         .catch((err) => core.setFailed(err));
-
-    const luraph = new require("./Luraph/Luraph")({
+    
+    const luraph = new luraphClass({
         apiKey: core.getInput("apiKey")
     });
 
