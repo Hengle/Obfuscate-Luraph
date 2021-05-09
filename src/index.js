@@ -19,7 +19,8 @@ const run = async () => {
         .readFile(filePath, { encoding: "utf8" })
         .catch((err) => core.setFailed(err));
 
-    const luraph = new require("./Luraph/Luraph")({
+    const luraphClass = require("./Luraph/Luraph")
+    const luraph = new luraphClass({
         apiKey: core.getInput("apiKey")
     });
 
