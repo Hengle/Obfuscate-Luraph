@@ -28,11 +28,9 @@ const run = async () => {
         fileName: "SimpleAnticheat_File.lua",
         script,
     }).then((result) => {
-        if (data.status == 200) {
-            fs.writeFile(filePath, result, () => {
-                core.setOutput("file", result);
-            });
-        }
+        fs.writeFile(filePath, result, () => {
+            core.setOutput("file", result);
+        });
     }).catch((err) => {
         return core.setFailed("An error occurred while obfuscating: " + err);
     });
